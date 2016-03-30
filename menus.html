@@ -1,0 +1,266 @@
+	
+<!doctype html>
+<html lang = "en">
+   <head>
+    <meta charset = "utf-8">
+      <title>jQuery UI Tabs functionality</title>
+      <link href = "http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css
+         " rel = "stylesheet">
+      <script src = "http://code.jquery.com/jquery-1.10.2.js"></script>
+      <script src = "http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	  <script type="text/javascript">
+	$(document).ready(function () {
+	$("button").click(function(){
+        $("#menu").toggle();
+    });
+});
+$(document).ready(function () {
+$(window).scroll(function(){
+        var window_top = $(window).scrollTop() + 12; 
+		// the "12" should equal the margin-top value for nav.stickydiv
+        var div_top = $('#checkdiv').offset().top;
+		if (window_top >= div_top) {
+                $('nav').addClass('stickydiv');
+            } else {
+                $('nav').removeClass('stickydiv');
+            }
+    });  
+
+
+  $(document).on("scroll", onScroll);
+    $('a[href^="#"]').on('click', function (e) {
+    	e.preventDefault();
+        $(document).off("scroll");
+        
+        $('a').each(function () {
+            $(this).removeClass('active');
+        })
+        $(this).addClass('active');
+      
+        var target = this.hash,
+            menu = target;
+		$target = $(target);
+       $('html, body').stop().animate({
+            'scrollTop': $target.offset().top+2
+        }, 1000, 'swing', function () {
+            window.location.hash = target;
+            $(document).on("scroll", onScroll);
+        });
+    });
+});
+
+function onScroll(event){
+    var scrollPos = $(document).scrollTop();
+    
+	$('#sidebar a').each(function () {
+        var currLink = $(this);
+		var refElement = $(currLink.attr("href"));
+        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
+            $('#sidebar ul li a').removeClass("active");
+            currLink.addClass("active");
+        }
+        else{
+            currLink.removeClass("active");
+        }
+    });
+}
+
+
+</script>
+		<script>
+$(function() {
+    $('#MainMenu > li').click(function(e) {
+        e.stopPropagation();
+        var $el = $('ul',this);
+        $('#MainMenu > li > ul').not($el).slideUp();
+        $el.stop(true, true).slideToggle(400);
+    });
+        $('#MainMenu > li > ul > li').click(function(e) {
+        e.stopImmediatePropagation();  
+    });
+});
+</script>
+<style>
+#MainMenu li ul li {
+height:25px;
+margin:10px 0 0 25px;
+padding:20px 0;
+width:100px;
+background: white;
+ }
+ #MainMenu{
+  margin-top:0px;
+ width:80px;
+ height:auto;
+ list-style:none;
+ -webkit-tap-highlight-color:rgba(0,0,0,0)
+border:1px solid #c9cac9
+ }
+ #MainMenu li{
+ width:100px;
+ height:45px;
+ margin-left:-30px;
+ border:6px solid #4b4b4b;
+ background-color:#666
+ }
+ #MainMenu li a{
+ color:white;
+ padding-left:15px;
+ 
+ }
+ #MainMenu li ul li a{
+ text-decoration:none;
+ color:black;
+ margin-left:-5px
+ }
+ .noJS
+ {
+ margin-left:-72px;
+ width:100px;
+ margin-top:40px;
+ display:none
+ }
+
+ #main {
+ height:600px;
+ width:1150px;
+  float:left;
+  margin-left:200px;
+  
+ }
+ #menu{
+ width:150px;
+ float:left;
+ background:linear-gradient(#0174DF,#0B0B61);
+ overflow:scroll;
+ height:570px;
+ overflow-x:hidden;
+ position:fixed;
+ }
+#me {
+ height:200px;
+ width:200px;
+ margin-left:350px
+}
+#photo{
+background-image:url("Light-Blue-Night-hd-background-wallpapers-image-1680x1050.jpg");
+height:570px;
+width:1200px;
+margin-left:-50px;
+margin-top:-50px
+}
+#description{
+color:white;
+text-align:center;
+padding-top:230px;
+font-family:"Comic Sans MS", cursive, sans-serif
+}
+</style>
+  </head>
+<body >
+<div>
+
+<div id="menu">
+<ul id="MainMenu">
+        <li><a href="#"><b>PROFILE</a>
+        
+              <ul class="noJS">
+                <li><a href="#About" class="active">About me</a></li>
+                <li><a href="#Technology">Technology</a></li>
+                <li><a href="#Projects">Projects</a></li>
+                <li><a href="#Awards">Awards </a></li>
+                <li><a href="#Curriculum">Extra Curriculum</a></li>
+                              
+       
+    </ul></li>  
+	</ul></div>
+	<div id="main">
+	<button style="margin-left:-45px"><img src="threelines.png" height=20 width=20></button>
+	
+	<section id="photo">
+	<h1 id="description"><b>This Blog is About Me</b></h1>
+	</section>
+	            <section id="About" style="width:1100px">
+                <h1>About me</h1>
+				<img src="IMG-20160130-WA0038.jpg" id="me"/>
+				<p style="text-align:justify;line-height:1.5">I am Neha Maheshwari.I have done my B.Tech from JIET School of Engineering & Technology for Girls,Jodhpur. 
+Presently, at the threshold of my career, with an expected Bachelor of Engineering degree in Computer Science, I have been researching IT Firms,fit for my professional interests.
+ I have done my summer training from Aditya Birla Cement,Chittorgarh. During that I learn .NET and made a project named as "ONLINE KAIZEN". I have done my training in PHP from NIIT Jaipur.
+ During this period I made a project on "Online Shopping" in PHP. In this project we act as a mediator between customers and shopkeepers. Customers can purchase anything from any shop they want and we'll deliever that things from that shop to the customer. 
+ Payment is made at the time of delievery.I want a platform to develop my skills and to learn many more things.I am a conscientious person who works hard and pays attention to detail. I'm flexible, quick to pick up new skills and eager to learn from others.
+</p>
+                
+            </section>
+            <section id="Technology">
+                <h1>Technology Known</h1>
+               <h3>1. Programming Languages</h3>
+			   <p style="margin-left:40px"> PHP, html, CSS,  JavaScript, C, .NET, Wordpress, jquery, Opencart</p>
+			   <h3>2. Operating Systems</h3>
+			   <p style="margin-left:40px"> Windows XP, Windows 7</p>
+			    <h3>3. Database Languages</h3>
+			   <p style="margin-left:40px">  SQL, MYSQL</p>
+			   <h3>4. Others</h3>
+			   <p style="margin-left:40px"> MS Word, MS Excel, MS PowerPoint</p>
+            </section>
+            <section id="Projects">
+                <h1>Projects</h1>
+                 <h3>1. Student Result Management System</h3>
+				 <p style="margin-left:40px;text-align:justify;line-height:1.5">Technology Used :- VB.Net<br>
+                   This project help the students of a batch to view their results of all previous semester’s exam’s marks.
+				   It will also provide the facility to add the marks of student, update the result of student for this purpose 
+				   user have to make account and before viewing  result he/she has to login from that account.
+                </p>
+				<h3>2. Online Kaizen System</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">Technology Used :- VB.Net<br>
+				Online Kaizen System is only for the use of employees of Aditya Works.It is just a type of form which can be 
+				fill by the user to suggest any kind of idea related to the development of the system.If the idea of user is 
+				implementable then award also given to that employee according to the category.
+				</p>
+				<h3>3. Online Shopping System</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">Technology Used :- PHP<br>
+				  In this Project there is facility for customers to order any product from any shop they want and 
+				  we will deliver that product from that particular shop to the customer’s address provided by him/her.
+				</p>
+				<h3>4. Online Quiz</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">Technology Used :- PHP<br>
+				   In this Project there are two module. First is USER & second is ADMIN.User can login and take
+				   their test of subject listed their and can get their Result. ADMIN can add subject, delete subject 
+				   and question of any subject.
+				   </p>
+				<h3>5. Online Shopping Portal</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">Technology Used :- OpenCart<br>
+				   This is an Online Shopping Portal. I have built this project using OpenCart.
+
+				</p>
+            </section>
+            <section id="Awards">
+                <h1>Awards & Honours</h1>
+               <h3>1. Scholarship from JIET School Of Engineering and Technology for Girls</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">
+				  Got scholarship from JIET for securing 80% and 2nd position in B.Tech 1st semester.
+				   </p>
+				   <h3>2. Certificate from IBM</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">
+				 Got IBM certificate for clear the test RFT i.e. RATIONAL FUNCTIONAL TESTER for JAVA.
+				   </p>
+				    <h3>3. Scholarship from Balika Shiksha Foundation</h3>
+				<p style="margin-left:40px;text-align:justify;line-height:1.5">
+				Got scholarship from “Balika Shiksha Foundation” for securing 85.23% in 12th class.
+				   </p>
+            </section>
+            <section id="Curriculum">
+                <h1>Extra Curriculum Activities</h1>
+                <ol style="line-height:1.5">
+				<li>Attended in Seminar “PATHSHALA” organized by JIET.</li>
+				<li>Attended Tech.Ed LIVE conducted by Microsoft at JIET.</li>
+				<li>Participated in the event “PARIVARTAN’11” conducted by JIET at Tiwari.   </li>
+				<li>Got 88% in “akhil bhartiya sanskriti gyan pariksha.</li>
+				<li>Got “Gargi award scholarship” for getting 94.67% & 88.17% in 8th & 10th class respectively.</li>
+				<li>Getting scholarship from “Balika Shiksha Foundation” for securing 85.23% in 12th class.</li>
+				<li>Got scholarship from JIET for securing 80% and 2nd position in B.Tech 1st semester.</li>
+				<li>Got IBM certificate for clear the test RFT i.e. RATIONAL FUNCTIONAL TESTER for JAVA.</li>
+				</ol>
+            </section>
+	</div> </div>
+	</body>
+	</html>
